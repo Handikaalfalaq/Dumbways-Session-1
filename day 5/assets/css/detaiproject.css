@@ -1,0 +1,152 @@
+.container_blog {
+    /* border: 1px solid black; */
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 20px;
+    height: auto;
+    width: 1100px;
+    padding: 0px 75px 100px 75px;
+    box-sizing: border-box;
+}
+
+.judul {
+    /* border: 1px solid yellow; */
+    margin: 30px 0px;
+    height: 50px;
+    width: 950px;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.object {
+    /* border: 1px solid red; */
+    height: 350px;
+    width: 950px;
+    display: flex; 
+    justify-content: space-between;
+}
+
+.foto_project {
+    border: 1px solid blue;
+    border-radius: 15px;
+    height: 350px;
+    width: 575px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.data {
+    /* border: 1px solid black; */
+    height: 350px;
+    width: 325px;
+}
+
+.waktu {
+    /* border: 1px solid blue; */
+    height: 135px;
+}
+
+.waktu span:nth-child(1), .technologies span:nth-child(1) {
+    font-size: 20px;
+}
+
+.tanggal, .periode, .baris {
+    /* border: 1px solid red; */
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
+.tanggal span svg, .periode span svg{
+    height: 25px;
+    width: 25px;
+    padding-top: 4px;
+}
+
+.tanggal span:nth-child(2), .periode span:nth-child(2) {
+    /* border: 1px solid green; */
+    margin-left: 15px;
+}
+
+.technologies {
+    /* border: 1px solid yellow; */
+    margin-top: 10px;
+    height: auto;
+}
+
+.coloum {
+    width: 100px;
+    height: 40px;
+}
+
+.coloum span svg{
+    height: 35px;
+    width: 35px;
+    padding-top: 4px;
+}
+
+
+.coloum {
+    /* border: 1px solid rgb(32, 17, 17); */
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
+.coloum span:nth-child(2) {
+    /* border: 1px solid rgb(166, 255, 0); */
+    margin-left: 10px;
+    width: 80px;
+    font-size: 18px;
+}
+
+.baris .coloum:nth-child(2) {
+    margin-left: 30px;
+}
+
+.nodejs:hover {
+    fill: green;
+    color: green;
+}
+
+.nextjs:hover {
+    fill: blue;
+    color: blue;
+}
+
+.reactjs:hover {
+    fill: rgb(90, 210, 243);
+    color: rgb(90, 210, 243);
+}
+
+.typescript:hover {
+    fill: rgb(47, 116, 192);
+    color: rgb(47, 116, 192);
+}
+
+.informasi {
+    margin-top: 40px;
+    /* border: 1px solid black; */
+    width: 950px;
+    height: auto;
+    font-size: 20px;
+}
+
+p {
+    margin: 0px;
+    text-indent: 50px;
+    text-align: justify;
+}
+
+
+
+
+
+
+
+
+
+

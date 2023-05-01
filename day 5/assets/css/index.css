@@ -1,0 +1,132 @@
+.card {
+    width: 830px;
+    height: 470px;
+    background-color: white;
+    box-shadow: 0px 0px 25px 7px black;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 45px;
+    border-radius: 5px;
+}
+
+.box_left {
+    /* border: 1px solid black; */
+    height: auto;
+    width: 500px;
+}
+
+.salam {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.informasi p {
+    margin: 0px;
+    font-size: 18px;
+}
+
+.data {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    align-items: center;
+    width: 235px;
+}
+
+.data a:nth-child(2) {
+    /* border: 1px solid black; */
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.contact {
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    padding: 3px 8px;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.contact:hover {
+    color: black;
+    background-color: white;
+}
+
+.cv {
+    font-size: 20px;
+}
+
+.unduh {
+    display: flex;
+    align-items: center;
+    height: 33px;
+    width: 25px;
+}
+
+.unduh:hover {
+    fill: var(--color);
+}
+
+.medsos {
+    margin-top: 30px;
+    /* border: 1px black solid; */
+    height: 30px;
+    width: 180px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.logo {
+    /* border: 1px solid black; */
+    margin: auto;
+    height: 35px;
+    width: 35px;
+}
+
+.logo:hover {
+    fill: var(--color);
+}
+
+.box_right {
+    /* border: 1px solid black; */
+    height: 400px;
+    width: 285px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 1px black;
+}
+
+.profil {
+    background-image: url(../img/foto4.jpg);
+    background-size: cover;
+    height: 330px;
+    width: 285px;
+}
+
+.nama {
+    /* border: 1px solid black; */
+    font-weight: bold;
+    margin-top: 3px;
+    font-size: 23px;
+    margin: 7px 0px 5px 0px;
+}
+
+.pekerjaan {
+    /* border: 1px solid black; */
+    font-size: 18px;
+}
+
+
+
