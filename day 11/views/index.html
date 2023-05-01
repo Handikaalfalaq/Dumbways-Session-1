@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    
+    <title>Index</title>
+
+    <style>
+      @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="https://dumbways.id/"><img src="../assets/img/logo.png" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
+              <li class="nav-item">
+                <a class="nav-link active text-black m-auto fw-semibold active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-black fw-semibold" href="/blog">Add Project </a>
+              </li>
+            </ul>
+            <a href="/contact-me">
+              <button class="contact-me btn btn-outline-primary">Contact Me</button>
+            </a>
+          </div>
+        </div>
+    </nav>
+
+    <!-- box biodata Author web -->
+    <div class="py-5">
+      <div class="card my-4 mx-auto p-4" style="max-width: 830px; width: 80%;">
+        <div class="row g-0 d-flex align-items-center">
+          <!-- card left -->
+          <div class="col-md-8">
+            <div class="card-body py-0 ps-2 pe-4" style="max-width: 500px;">
+              <h5 class="card-title">Hi Welcome to my hut</h5>
+              <p class="card-text" style="text-align: justify;">my name is handika al falaq who can be called by the name dika. I come from Kotabumi, North Lampung, Lampung. I am the second child of 2 brothers.
+              I'm currently participating in bootcamp activities at dumeways.id. This bootcamp taught me to become a full-stack developer, which lasted for 3 months consisting of 1 month of online learning and 2 months of offline learning.</p>
+              
+              <!-- box cv -->
+              <div class="d-flex align-items-center my-4" style="max-width: 80%;">
+                <a class="contact-me btn btn-outline-danger
+                " href="contact-me.html">Contact Me</a>
+                <a href="#" class="d-flex align-items-center">
+                  <span class="halo mx-2">Download Cv</span>
+                  <i class="fa-solid fa-download fa-2x"></i>
+                </a>
+              </div>
+
+              <!-- box social media -->
+              <div class="mt-3 mb-3 d-flex flex-coloumn ">
+                <a class="social-media" href="https://www.linkedin.com/in/handika-al-falaq" style="--color:gold">
+                  <i class="fa-brands fa-linkedin-in fa-2x"></i>
+                </a>
+                <a class="social-media" href="https://www.instagram.com/handika_alfalaq/" style="--color:red">
+                  <i class="fa-brands fa-instagram fa-2x"></i>
+                </a>
+                <a class="social-media" href="https://mobile.facebook.com/handika.alfalaq" style="--color: blue">
+                  <i class="fa-brands fa-facebook-f fa-2x"></i>
+                </a>
+                <a class="social-media" href="https://twitter.com/handikaal" style="--color:yellow">
+                  <i class="fa-brands fa-twitter fa-2x"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- card right -->
+          <div class="cardProfil col-md-4 d-flex flex-column align-items-center rounded border border-light">
+            <div><img src="/assets/img/fotoprofil.jpg" class="img-fluid rounded-top" alt="profile picture"></div>
+            <div class="nameCard fs-4 mt-1">Handika Al Falaq</div>
+            <div class="nameWork">Fullstack Developer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- box project -->
+    <div class="containerBlog bg-light d-flex flex-column justify-content-center align-items-center pb-5">
+      <p class="my-4 fs-3 fw-bold">MY PROJECT</p>
+      <div class="row row-cols-1 row-cols-md-3 g-4  mx-auto" style="max-width: 1450px;">
+        <!-- dinamic content -->
+        {{range $index, $blog := .blogHome}}
+        <div class="col">
+          <div class="card h-100 p-3">
+            <div class="rounded" style="height: 280px; width: auto; background-image: url({{$blog.Image}}); background-size: cover; background-position: center center;">
+            </div>
+            <div class="card-body-blog">
+              <div class="title d-flex my-2 ms-1">
+                <a href="/blog-detail/{{$index}}">
+                  <h5 class="card-title m-0 text-uppercase">{{$blog.Title}} -</h5>
+                </a>
+                <h5 class="m-0">{{$blog.Year}}</h5>
+              </div>
+              <div class="duration ms-1">durasi {{$blog.DurationMonth}} bulan, {{$blog.DurationDay}} hari</div>
+
+              <p class="card-text my-3 ms-1" style="height: 150px; overflow: hidden;">{{$blog.Content}}</p>
+
+              <div class="ms-1">
+                <a class="software" href="https://play.google.com/store/" style="--color:blue">
+                  <i class="bi bi-google-play fa-2x"></i>
+                </a>
+                <a class="software" href="https://web.airdroid.com/" style="--color:#a4c639">
+                  <i class="bi bi-android2 fa-2x"></i>
+                </a>
+                <a class="software" href="https://www.java.com/en/" style="--color: red">
+                  <i class="fa-brands fa-java fa-2x"></i>
+                </a>
+              </div>
+
+              <div class="action d-flex justify-content-between my-2 mx-1">
+                <a href="/edit-blog/{{$index}}" class="edit btn btn-dark" style="width: 45%;">edit</a>
+                
+                <a href="/delete-blog/{{$index}}" class="delete btn btn-dark" style="width: 45%;">delete</a>
+                
+              </div> 
+            </div>
+          </div>
+        </div>
+        {{end}}
+
+      </div> 
+    </div>
+
+   
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/d8072d68f9.js" crossorigin="anonymous"></script>
+</body>
+</html>

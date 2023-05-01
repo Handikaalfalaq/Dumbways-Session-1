@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <title>Blog</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-light ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="https://dumbways.id/"><img src="../assets/img/logo.png" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
+          <li class="nav-item">
+            <a class="nav-link active text-black m-auto fw-semibold active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black fw-semibold" href="/blog">Add Project </a>
+          </li>
+        </ul>
+        <a href="/contact-me">
+          <button class="contact-me btn btn-outline-primary">Contact Me</button>
+        </a>
+      </div>
+    </div>
+</nav>
+
+    <div class="container py-5 px-1" style="max-width: 830px; width: 80%;">
+      <p class="fw-bold text-center fs-3 text-black">ADD MY PROJECT</p>
+
+      <form action="/add-blog" method="post" autocomplete="off">
+        <div class="mb-3">
+          <label for="title" class="form-label">Project Name</label>
+          <input name="titleInput" type="text" class="form-control" id="title" required>
+        </div>
+
+        <div class="date d-flex row mb-3">
+          <div class="w-50">
+              <label class="label d-flex mb-1" for="startdate">Start Date</label>
+              <input name="startInput" class="form-control" type="date" id="startdate" required>
+          </div>
+          <div class="w-50">
+              <label class="label d-flex mb-1" for="enddate">End Date</label>
+              <input name="endInput" class="form-control" type="date" id="enddate" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="content" class="form-label">Description</label>
+            <div><textarea name="descriptionInput" id="content" class="form-control" rows="5" style="resize: none;" required></textarea></div>
+        </div>
+        
+        <p>Technology</p>
+        <div class="px-3 row row-cols-sm-2">
+          
+          <div class="mb-3 form-check">
+            <input name="nodejsInput" class="form-check-input" type="checkbox" value="nodejsInput"  id="nodejsInput">
+            <label class="form-check-label" for="nodejsInput">Node Js</label>
+          </div>
+         
+          <div class="mb-3 form-check">
+            <input name="nextjsInput" class="form-check-input" type="checkbox" value="nextjsInput" id="nextjsInput">
+            <label class="form-check-label" for="nextjsInput">Next Js</label>
+          </div>
+
+          <div class="mb-3 form-check">
+            <input name="reactjsInput" class="form-check-input" type="checkbox" value="reactjsInput" id="reactjsInput">
+            <label class="form-check-label" for="reactjsInput">React Js</label>
+          </div>
+
+          <div class="mb-3 form-check">
+            <input name="typescriptInput" class="form-check-input" type="checkbox" value="typescriptInput" id="typescriptInput">
+            <label class="form-check-label" for="typeScript">Typescript</label>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Upload Image</label>
+          <input class="form-control" type="file" accept="image/jpeg, image/png" id="formFile" accept="image/*" required>
+        </div>
+          
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>
