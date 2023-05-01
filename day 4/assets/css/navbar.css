@@ -1,0 +1,77 @@
+body {
+    align-items: center;
+    background-color: #acacac;
+}
+
+.container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #acacac;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav {
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 50px;
+    
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 50px;
+    width: 1200px;
+    height: 50px;
+    /* border: 1px solid black; */
+    background-color: white;
+    z-index: 1;
+}
+
+.navbar_kiri {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    align-items: center;
+    width: 350px;
+    margin-left: 20px;
+}
+
+.logo_du {
+    background-image: url(../img/logo.png);
+    background-size: cover;
+    /* border: 1px solid black; */
+    height: 33px;
+    width: 50px;
+}
+
+.home, .my_project, .navbar_kanan {
+    /* border: 1px solid red; */
+    color: white;
+    box-shadow: 0 0 40px 40px black inset, 0 0 0 0 black;
+    transition: all 200ms ease-in-out;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 7px 20px;
+    border-radius: 10px;
+}
+
+.home:hover, .my_project:hover {
+    box-shadow: 0 0 10px 0 black inset, 0 0 10px 4px black;
+    color: black;
+}
+
+.navbar_kanan:hover {
+    box-shadow: 0 0 10px 0 black inset, 0 0 10px 4px black;
+    color: black;
+}

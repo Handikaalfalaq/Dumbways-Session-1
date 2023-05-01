@@ -1,0 +1,316 @@
+.container_addproject {
+    height: 570px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    padding-bottom: 20px;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: arial;
+    position: relative;
+}
+
+.add_my_project {
+    font-weight: bold;
+    margin: 5px auto 20px auto;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.name_project input {
+    margin-top: 5px;
+    /* height: 30px; */
+    width: 100%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 0px;
+    box-shadow: 0px 3px 10px .1px black;
+    padding: 10px;
+    background-color: #e6e6e6;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.date div {
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+}
+
+.date input{
+    border-radius: 5px;
+    border: 0px;
+    box-shadow: 0px 3px 10px .1px black;
+    padding: 9px 30px;
+    background-color: #e6e6e6;
+}
+
+textarea {
+    height: 150px;
+    resize: none;
+    width: 100%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 10px .1px black;
+    background-color: #e6e6e6;
+}
+
+.container_checkbox {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container_checkbox div:nth-child(1) {
+    margin-bottom: 8px
+}
+
+.baris {
+    /* border: 1px solid black; */
+    display: flex;
+    width: 400px;
+}
+
+.colom {
+    /* border: 1px solid red; */
+    font-size: 13px;
+    width: 100px;
+    margin: 0px 100px 0px 0px;
+}
+
+.colom label {
+    display: flex;
+}
+
+.colom label input {
+    margin: 0px 10px 0px 0px;
+}
+
+.upload_image {
+    margin-top: 10px;
+}
+
+.choose {
+    margin-top: 8px;
+    /* border: 1px solid red; */
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    display: flex;
+    height: 37px;
+    box-shadow: 0px 3px 10px .1px black;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.choose input {
+    /* border: 1px solid  green ; */
+    width: 100%;
+    padding: 7px;
+    z-index: 1;
+}
+
+.file {
+    /* border: 1px solid red; */
+    height: 25px;
+    width: 25px;
+    padding-top: 1px;
+    position: absolute;
+    padding: 5px 5px 0px 0px;
+    right: 0px;
+}
+
+.choose input:hover + .file {
+    fill: green;
+}
+
+.container_addproject button {
+    height: 30px;
+    width: 100px;
+    border-radius: 15px;
+    padding: 3px 13px;
+    position: absolute;
+    color: white;
+    background-color: black;
+    border: 3px solid black;
+    right: 0px;
+    bottom: 0px;
+}
+
+.container_addproject button:hover {
+    color: black;
+    background-color: white;
+
+}
+
+
+
+
+
+.background_bloglist {
+    margin-top: 100px;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    /* border: 1px solid black; */
+    padding: 0px 20px;
+}
+
+.container_bloglist {
+    box-sizing: border-box;
+    padding: 40px 0px;
+    /* border: 1px solid black; */
+    height: auto;
+    margin: auto;
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.myproject {
+    /* border: 1px solid blue; */
+    align-items: center;
+    margin: auto;
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    
+}
+
+#box_project {
+    /* border: 1px solid red; */
+    height: auto;
+    width: 1150px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 310px);
+    justify-content: space-between;
+    /* grid: 20px; */
+}
+
+.blog_project {
+    /* border: 1px solid rgb(60, 255, 0); */
+    box-shadow: 0px 3px 10px .1px black;
+    height: 450px;
+    width: 310px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.blog_project:hover {
+    box-shadow: 0px 3px 20px 5px black;
+}
+
+.foto_blog {
+    /* border: 1px solid rgb(17, 0, 255); */
+    height: 230px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.project_name {
+    margin-top: 10px;
+    font-size: 15px;
+    /* border: 1px solid rgb(243, 0, 0); */
+    width: 100%;
+    width: 100%;
+    max-height: 36px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.project_name span:nth-child(1) {
+    font-weight: bold;
+}
+
+.project_name span:nth-child(2) {
+    font-size: 12px;
+}
+
+.durasi {
+    /* border: 1px solid rgb(52, 250, 2); */
+    height: auto;
+    font-size: 12px;
+    width: 100%;
+}
+.informasi {
+    margin-top: 7px;
+    /* border: 1px solid rgb(255, 238, 0); */
+    height: 42px;
+    width: 100%;
+    font-size: 12px;
+    overflow: hidden;
+}
+.technologies {
+    /* border: 1px solid rgb(255, 145, 0); */
+    height: 35px;
+    width: 100%;
+    margin: 15px 0px;
+    align-items: center;
+    display: flex;
+}
+
+.technologies a {
+    /* border: 1px solid black; */
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.logo_nodejs:hover {
+    fill: green;
+}
+
+.logo_nextjs:hover {
+    fill: blue;
+}
+
+.logo_reactjs:hover {
+    fill: rgb(90, 210, 243);
+}
+
+.logo_typescript:hover {
+    fill: rgb(47, 116, 192);
+}
+
+.action {
+    /* border: 1px solid rgb(17, 0, 255); */
+    height: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.edit, .delete {
+    border: 1px solid black;
+    width: 130px;
+    text-align: center;
+    padding: 3px 0px;
+    border-radius: 4px;
+    font-size: 12px;
+    background-color: rgb(21, 25, 39);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
