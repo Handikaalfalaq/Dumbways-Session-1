@@ -1,0 +1,439 @@
+.card {
+    width: 80%;
+    max-width: 830px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 45px 20px 37px;
+    color : white;
+    --border-size: 3px;
+    --border-angle: 0turn;
+    background-size: cover;
+    background-image: url(/assets/img/background1.jpg),
+    conic-gradient(from var(--border-angle), transparent 0%, #00e6eb);
+    background-size: calc(100% - (var(--border-size) * 2))
+    calc(100% - (var(--border-size) * 2)), cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    animation: bg-spin 10s linear infinite;
+}
+
+@keyframes bg-spin {
+    to {
+      --border-angle: 1turn;
+    }
+}
+
+.box:hover {
+    animation-play-state: paused;
+}
+  
+@property --border-angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0turn;
+}
+
+.box_left {
+    height: auto;
+    width: 500px;
+    border: 3px solid #015557;
+    background-color:black;
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    flex: 65%;
+}
+
+.salam {
+    font-size: 25px;
+    width: auto;
+    font-weight: bold;
+    margin-bottom: 10px;
+    /* border: 1px solid red; */
+}
+
+.informasi {
+    width: auto;
+    font-size: 16px;
+    margin: 0px 2px;
+    /* border: 1px solid red; */
+}
+
+.data {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    align-items: center;
+    width: 235px;
+}
+
+.data a:nth-child(2) {
+    /* border: 1px solid black; */
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.contact {
+    color: white;
+    background-color: black;
+    border: 1px solid #015557;
+    padding: 3px 8px;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.contact:hover {
+    color: black;
+    background-color: #015557;
+}
+
+.cv {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.cv:hover + .unduh {
+    --color: #your-color-code;
+    fill: var(--color);
+    border: 2px solid var(--color);
+}
+
+.unduh {
+    display: flex;
+    align-items: center;
+    height: 22px;
+    width: 22px;
+    border: 2px solid #015557;
+    padding: 2px 3px;
+    border-radius: 10px;
+    fill: #015557;
+}
+
+.unduh:hover {
+    --color: #your-color-code;
+    fill: var(--color);
+    border: 2px solid var(--color);
+}
+
+.medsos {
+    margin: 10px 0px 0px 0px;
+    border: 1px solid #015557;
+    height: 50px;
+    width: 240px;
+    display: flex;
+    padding: 10px 10px;
+    border-radius: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.logo {
+    border-radius: 100%;
+    padding: 7px;
+    border: 2px solid #015557;
+    margin: auto;
+    height: 25px;
+    width: 25px;
+    background-color: black;
+    fill: #015557;
+}
+
+.logo:hover {
+  --color: #your-color-code;
+  fill: var(--color);
+  border: 2px solid var(--color);
+}
+
+.box_right {
+    flex: 40%;
+    border: 1px solid #00e6eb;
+    background-color: #015557;
+    height: 400px;
+    width: 285px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 1px black;
+    margin-left: 50px;
+}
+
+.profil {
+    background: url(../img/foto4.jpg);
+    background-size: cover;
+    height: 330px;
+    width: 300px;
+    /* border: 1px solid black; */
+}
+
+.nama {
+    /* border: 1px solid black; */
+    font-weight: bold;
+    margin-top: 3px;
+    font-size: 23px;
+    margin: 7px 0px 5px 0px;
+}
+
+.pekerjaan {
+    /* border: 1px solid black; */
+    font-size: 18px;
+}
+
+
+/* viewport nest hub max */
+/* ipad mini */
+@media only screen and (max-width: 768px) {
+    .card { 
+        flex-direction: column;
+        margin: auto;
+        height: auto;
+        padding: 40px;
+        width: 70%;
+    }
+
+    .box_left {
+        height: auto;
+        width: 90%;
+    }
+
+    .salam {
+        font-size: 20px;
+    }
+
+    .informasi {
+        font-size: 12px;
+    }    
+
+    .data {
+        width: 90%;
+        justify-content: flex-start;
+    }
+
+    .data a:nth-child(2) {
+        justify-content: flex-start;
+    }
+
+    .contact, .cv {
+        font-size: 15px;
+        margin-right: 10px;
+    }
+
+    .unduh {
+        height: 17px;
+        width: 17px;
+    }
+
+    .medsos {
+        margin: 10px 0px;
+        width: 50%;
+        height: 80%;
+    }
+
+    .logo {
+        width: 18px;
+        height: 18px;
+    }
+
+    .box_right {
+        margin-top: 30px;
+        margin-left: 0px;
+    }
+
+    /* .profil {
+        height: 37vh;
+        width: 37vw;
+    } */
+    
+    .nama {
+        font-size: 20px;
+        /* border: 1px solid red; */
+        text-align: center;
+        margin: 7px 0px 1px 0px;
+    }
+
+    .pekerjaan {
+        font-size: 15px;
+        /* border: 1px solid red; */
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+
+
+/* iphone se */
+@media only screen and (max-width: 576px) {
+    .card { 
+        /* border: 1px solid red; */
+        padding: 30px;
+        margin: 0px;
+        width: 70%;
+    }
+
+    .box_left {
+        text-align: center;
+        align-items: center;
+        width: 80%;
+    }
+
+    .salam {
+        font-size: 14px;
+    }
+
+    .informasi {
+        font-size: 10px;
+    }
+
+    .data {
+        width: 80%;
+        margin: auto;
+        justify-content: center;
+    }
+
+    .contact, .cv {
+        font-size: 10px;
+        margin-right: 10px;
+    }
+    
+    .unduh {
+        height: 13px;
+        width: 13px;
+        border-radius: 8px;
+    }
+
+    .data a:nth-child(2) {
+        justify-content: center;
+        width: auto;
+    }
+
+    .medsos {
+        margin: 10px auto;
+        width: 80%;
+        height: 80%;
+        padding: 7px;
+    }
+
+    .logo {
+        width: 15px;
+        height: 15px;
+    }
+
+    .box_right {
+        width: auto;
+        /* height: auto; */
+    }
+
+    .profil {
+        height: 200px;
+        width: 200px;
+    }
+
+    .nama {
+        font-size: 15px;
+        /* border: 1px solid red; */
+        text-align: center;
+        margin: 7px 0px 1px 0px;
+    }
+
+    .pekerjaan {
+        font-size: 10px;
+        /* border: 1px solid red; */
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    
+}
+
+@media only screen and (max-width: 375px) {
+    body {
+        min-width: 300px;}
+
+    .card { 
+        /* border: 1px solid red; */
+        padding: 30px;
+        margin: 0px;
+        width: 70%;
+    }
+
+    .box_left {
+        text-align: center;
+        align-items: center;
+        width: 80%;
+    }
+
+    .salam {
+        font-size: 14px;
+    }
+
+    .informasi {
+        font-size: 10px;
+    }
+
+    .data {
+        width: 80%;
+        margin: auto;
+        justify-content: center;
+    }
+
+    .contact, .cv {
+        font-size: 10px;
+        margin-right: 10px;
+    }
+    
+    .unduh {
+        height: 13px;
+        width: 13px;
+        border-radius: 8px;
+    }
+
+    .data a:nth-child(2) {
+        justify-content: center;
+        width: auto;
+    }
+
+    .medsos {
+        margin: 10px auto;
+        width: 80%;
+        height: 80%;
+        padding: 7px;
+    }
+
+    .logo {
+        width: 15px;
+        height: 15px;
+    }
+
+    .box_right {
+        width: auto;
+        /* height: auto; */
+    }
+
+    .profil {
+        height: 100px;
+        width: 100px;
+    }
+
+    .nama {
+        font-size: 10px;
+        /* border: 1px solid red; */
+        text-align: center;
+        margin: 7px 0px 1px 0px;
+    }
+
+    .pekerjaan {
+        font-size: 7px;
+        /* border: 1px solid red; */
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    
+}
+
