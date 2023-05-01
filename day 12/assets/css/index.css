@@ -1,0 +1,49 @@
+.halo:hover + .fa-download {
+    color: green;
+}
+
+.fa-download:hover {
+    color: green;
+}
+
+.social-media {
+    padding-top: 1px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 3px solid black;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+  }
+
+.social-media:hover {
+    color:var(--color);
+    border: 3px solid var(--color);
+}
+
+.software {
+    margin-right: 10px;
+}
+
+.card {
+    box-shadow: 0px 0px 15px 0.5px black;
+}
+
+.software:hover  {
+    color: var(--color);
+}
+
+@media only screen and (max-width: 767px) {
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+
