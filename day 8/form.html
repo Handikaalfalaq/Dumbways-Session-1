@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navanimasi"></div>
+        <div class="navbar_kiri">
+            <a href="https://dumbways.id">
+                <div class="logo_du"></div>
+            </a>
+            
+            <a href="/index.html">
+                <div class="home">Home</div>
+            </a>
+
+            <a href="/myproject.html" class="my_project" id="my_project">
+                <div>My Project</div>
+            </a>
+
+            <a href="/testimonial.html" class="testimonials" id="testimonials">
+                <div>Testimonial</div>
+            </a>
+
+        </div>
+        <div class="navbar_kanan">
+            <a href="/form.html" >
+                <div class="contactme">Contact Me </div>
+            </a>
+
+            <div class="humburger">
+            <svg viewBox="150 400 2150 3300">
+                <path d="M1654 601c20,11 27,36 16,56l-88 158c159,94 264,258 264,445l-571 0 -571 0c0,-188 107,-354 268,-447l-87 -156c-11,-20 -4,-45 16,-56 20,-11 44,-4 55,16l89 160c70,-28 148,-44 230,-44 83,0 162,16 234,46l89 -162c11,-20 36,-27 56,-16zm-115 354c-31,0 -56,25 -56,56 0,31 25,57 56,57 31,0 57,-26 57,-57 0,-31 -26,-56 -57,-56zm-533 0c-31,0 -57,25 -57,56 0,31 26,57 57,57 31,0 56,-26 56,-57 0,-31 -25,-56 -56,-56z"/>
+                <path d="M2022 1268l0 0c-83,0 -151,68 -151,151l0 533c0,83 68,151 151,151l0 0c83,0 150,-68 150,-151l0 -533c0,-83 -67,-151 -150,-151z"/>
+                <path d="M528 1268l0 0c83,0 151,68 151,151l0 533c0,83 -68,151 -151,151l0 0c-83,0 -150,-68 -150,-151l0 -533c0,-83 67,-151 150,-151z"/>
+                <polygon points="704,1818 1846,1818 1846,2027 704,2027 "/>
+                <path d="M704 2065l1142 0 0 90c0,66 -54,120 -120,120l-88 0 0 278c0,83 -67,151 -151,151 -83,0 -150,-68 -150,-151l0 -278 -126 0 0 278c0,83 -67,151 -150,151 -83,0 -151,-68 -151,-151l0 -278 -86 0c-66,0 -120,-54 -120,-120l0 -90z"/>
+                <polygon points="704,1569 1846,1569 1846,1778 704,1778 "/>
+                <path d="M824 1319l902 0c66,0 120,54 120,120l0 89 -1142 0 0 -89c0,-66 54,-120 120,-120z"/>
+            </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="navhumburger">
+        <div class="navshadow">sd</div>
+        <a href="/index.html"> <div class="humburger_home">Home</div></a>
+        <a href="/myproject.html"><div class="humburger_myproject">My Project</div></a>
+        <a href="/form.html"><div class="humburger_contactme">Contact Me</div></a>
+        <a href="/testimonial.html"> <div class="humburger_testimonial">Testimonial</div></a>
+    </div>
+    
+    <div class="container">
+        <form class="form">
+            <div class="judul_form">GET IN TOUCH</div>
+
+            <div class="kotak">
+                <label for="name">Name</label>
+                <div><input type="text" id="name"></div>
+            </div>
+
+            <div class="kotak">
+                <label for="email">Email</label>
+                <div><input type="text" id="email"></div>
+            </div>
+
+            <div class="kotak">
+                <label for="phone">Phone Number</label>
+                <div><input type="text" id="phone"></div>
+            </div>
+
+            <div class="kotak">
+                <label for="subject">Subject</label>
+                <select id="subject">
+                    <option>Let's Talk</option>
+                    <option>Let's Collaboration</option>
+                    <option>I am Hiring</option>
+                </select>
+            </div>
+
+            <div class="kotak">
+                <label for="message">Message</label>
+                <div><textarea id="message"></textarea></div>
+            </div>
+
+            <button id="button" type="button" >submit</button>
+        </form>
+
+
+    </div>
+
+
+<script src="assets/js/form.js"></script>
+<script src="/assets/js/navbar.js"></script>
+</body>
+</html>
