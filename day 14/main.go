@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 	"html/template"
-	"log"
-	"os"
 
 	// "log"
 	"net/http"
@@ -66,6 +64,7 @@ func main() {
 func home(c echo.Context) error {
 	tmpl, err := template.ParseFiles("views/index.html")
 	if err != nil {
+		fmt.Println(err.Error())
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
 
@@ -110,6 +109,7 @@ func home(c echo.Context) error {
 	dataBlog := map[string]interface{}{
 		"blogHome": result,
 	}
+	fmt.Println(time.Now())
 
 	return tmpl.Execute(c.Response(), dataBlog)
 }
@@ -117,6 +117,7 @@ func home(c echo.Context) error {
 func blog(c echo.Context) error {
 	tmpl, err := template.ParseFiles("views/blog.html")
 	if err != nil {
+		fmt.Println(err.Error())
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
 	return tmpl.Execute(c.Response(), nil)
@@ -125,6 +126,7 @@ func blog(c echo.Context) error {
 func contactMe(c echo.Context) error {
 	tmpl, err := template.ParseFiles("views/contact-me.html")
 	if err != nil {
+		fmt.Println(err.Error())
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
 	return tmpl.Execute(c.Response(), nil)
@@ -135,6 +137,7 @@ func blogDetail(c echo.Context) error {
 	tmpl, err := template.ParseFiles("views/blog-detail.html")
 
 	if err != nil {
+		fmt.Println(err.Error())
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
 
@@ -143,8 +146,10 @@ func blogDetail(c echo.Context) error {
 	err = connection.Conn.QueryRow(context.Background(), "SELECT title, content, image, startdate, enddate, technology FROM tb_blog WHERE id = $1", id).Scan(&blogData.Title, &blogData.Content, &blogData.Image, &blogData.StartDate, &blogData.EndDate, &blogData.Technology)
 
 	if err != nil {
-		log.Fatalf("Unable to query data from database: %v\n", err)
+		fmt.Println(err.Error())
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
+
 	date1, _ := time.Parse("2006-01-02", blogData.StartDate)
 	date2, _ := time.Parse("2006-01-02", blogData.EndDate)
 
@@ -178,17 +183,14 @@ func blogDetail(c echo.Context) error {
 }
 
 func addBlog(c echo.Context) error {
+	Title := c.FormValue("titleInput")
+	Content := c.FormValue("descriptionInput")
+	StartDate := c.FormValue("startDate")
+	EndDate := c.FormValue("endDate")
+	Image := c.FormValue("imageInput")
+	Technology := []string{c.FormValue("nodejsInput"), c.FormValue("nextjsInput"), c.FormValue("reactjsInput"), c.FormValue("typescriptInput")}
 
-	var addBlog = Blog{
-		Title:      c.FormValue("titleInput"),
-		Content:    c.FormValue("descriptionInput"),
-		StartDate:  c.FormValue("startDate"),
-		EndDate:    c.FormValue("endDate"),
-		Image:      c.FormValue("imageInput"),
-		Technology: []string{c.FormValue("nodejsInput"), c.FormValue("nextjsInput"), c.FormValue("reactjsInput"), c.FormValue("typescriptInput")},
-	}
-
-	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_blog (title, content, image, startdate, enddate, technology) VALUES ($1, $2, $3, $4, $5, $6)", addBlog.Title, addBlog.Content, addBlog.Image, addBlog.StartDate, addBlog.EndDate, addBlog.Technology)
+	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_blog (title, content, image, startdate, enddate, technology) VALUES ($1, $2, $3, $4, $5, $6)", Title, Content, Image, StartDate, EndDate, Technology)
 
 	if err != nil {
 		fmt.Println(err.Error())
@@ -202,6 +204,7 @@ func deleteBlog(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 	tmpl, err := template.ParseFiles("views/index.html")
 	if err != nil {
+		fmt.Println(err.Error())
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
 
@@ -245,8 +248,8 @@ func deleteBlog(c echo.Context) error {
 
 	deleteData := map[string]interface{}{
 		"blogHome": result,
-		"id":      id,
-		"confirm": confirm,
+		"id":       id,
+		"confirm":  confirm,
 	}
 
 	return tmpl.Execute(c.Response(), deleteData)
@@ -256,7 +259,12 @@ func confirmDelete(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 	answer := c.FormValue("answer")
 	if answer == "yes" {
-		_, _ = connection.Conn.Exec(context.Background(), "DELETE FROM tb_blog WHERE id = $1", id)
+		var err error
+		_, err = connection.Conn.Exec(context.Background(), "DELETE FROM tb_blog WHERE id = $1", id)
+		if err != nil {
+			fmt.Println(err.Error())
+			return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+		}
 	}
 	return c.Redirect(http.StatusMovedPermanently, "/")
 }
@@ -275,11 +283,16 @@ func editBlog(c echo.Context) error {
 	tmpl, _ := template.ParseFiles("views/edit-blog.html")
 
 	var blogData Blog
-	err = connection.Conn.QueryRow(context.Background(), "SELECT title, content, image, startdate, enddate, nodejs, nextjs, reactjs, typescript FROM tb_blog WHERE id = $1", idEdit).Scan(&blogData.Title, &blogData.Content, &blogData.Image, &blogData.StartDate, &blogData.EndDate, &blogData.Nodejs, &blogData.Nextjs, &blogData.Reactjs, &blogData.Typescript)
+	err = connection.Conn.QueryRow(context.Background(), "SELECT title, content, image, startdate, enddate, technology FROM tb_blog WHERE id = $1", idEdit).Scan(&blogData.Title, &blogData.Content, &blogData.Image, &blogData.StartDate, &blogData.EndDate, &blogData.Technology)
 	if err != nil {
 		fmt.Println(err.Error())
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
+
+	blogData.Nodejs = blogData.Technology[0]
+	blogData.Nextjs = blogData.Technology[1]
+	blogData.Reactjs = blogData.Technology[2]
+	blogData.Typescript = blogData.Technology[3]
 
 	NodejsChecked := ""
 	if blogData.Nodejs == "nodejsInput" {
@@ -338,7 +351,7 @@ func editBlogFinished(c echo.Context) error {
 	_, err := connection.Conn.Exec(context.Background(), "UPDATE tb_blog SET title=$1, content=$2, image=$3, startdate=$4, enddate=$5, nodejs=$6, nextjs=$7, reactjs=$8, typescript=$9, technology=$10 WHERE id=$11", editBlog.Title, editBlog.Content, editBlog.Image, editBlog.StartDate, editBlog.EndDate, editBlog.Nodejs, editBlog.Nextjs, editBlog.Reactjs, editBlog.Typescript, editBlog.Technology, idEdit)
 
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Unable to execute query: %v\n", err)
+		fmt.Println(err.Error())
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
 
