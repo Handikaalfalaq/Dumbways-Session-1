@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"html/template"
-	"log"
 	"os"
 
 	"net/http"
@@ -66,13 +65,13 @@ func main() {
 	// routing
 	e.GET("/", home)
 	e.GET("/blog", blog)
+	e.GET("/logout", logOut)
 	e.GET("/contact-me", contactMe)
 	e.GET("/blog-detail/:id", blogDetail)
 	e.GET("/delete-blog/:id", deleteBlog)
 	e.GET("/edit-blog/:id", editBlog)
 	e.GET("/form-login", formLogin)
 	e.GET("/form-register", formRegister)
-	e.GET("/logOut", logOut)
 
 	e.POST("/add-blog", addBlog)
 	e.POST("/confirm-delete/:id", confirmDelete)
@@ -85,6 +84,7 @@ func main() {
 
 func home(c echo.Context) error {
 	sess, _ := session.Get("session", c)
+	notif, _ := session.Get("notif", c)
 
 	tmpl, err := template.ParseFiles("views/index.html")
 	if err != nil {
@@ -129,10 +129,6 @@ func home(c echo.Context) error {
 		result = append(result, each)
 	}
 
-	if sess.Values["isLogin"] != true {
-		sess.Values["isLogin"] = false
-	}
-
 	flash := map[string]interface{}{
 		"flashStatusLogin": sess.Values["isLogin"],
 		"flashName":        sess.Values["name"],
@@ -142,16 +138,16 @@ func home(c echo.Context) error {
 		"FlashMessage":     "",
 	}
 
-	if sess.Values["status"] != nil {
-		flash["FlashStatus"] = sess.Values["status"]
-		delete(sess.Values, "status")
+	if notif.Values["status"] != nil {
+		flash["FlashStatus"] = notif.Values["status"]
+		delete(notif.Values, "status")
 	}
 
-	if sess.Values["message"] != nil {
-		flash["FlashMessage"] = sess.Values["message"]
-		delete(sess.Values, "message")
+	if notif.Values["message"] != nil {
+		flash["FlashMessage"] = notif.Values["message"]
+		delete(notif.Values, "message")
 	}
-	sess.Save(c.Request(), c.Response())
+	notif.Save(c.Request(), c.Response())
 
 	return tmpl.Execute(c.Response(), flash)
 }
@@ -185,8 +181,10 @@ func blogDetail(c echo.Context) error {
 	err = connection.Conn.QueryRow(context.Background(), "SELECT title, content, image, startdate, enddate, technology FROM tb_blog WHERE id = $1", id).Scan(&blogData.Title, &blogData.Content, &blogData.Image, &blogData.StartDate, &blogData.EndDate, &blogData.Technology)
 
 	if err != nil {
-		log.Fatalf("Unable to query data from database: %v\n", err)
+		fmt.Println(err.Error())
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
+
 	date1, _ := time.Parse("2006-01-02", blogData.StartDate)
 	date2, _ := time.Parse("2006-01-02", blogData.EndDate)
 
@@ -390,23 +388,23 @@ func formRegister(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
 
-	sess, _ := session.Get("session", c)
+	notif, _ := session.Get("notif", c)
 	flash := map[string]interface{}{
 		"FlashStatus":  "",
 		"FlashMessage": "",
 	}
 
-	if sess.Values["status"] != nil {
-		flash["FlashStatus"] = sess.Values["status"]
-		delete(sess.Values, "status")
+	if notif.Values["status"] != nil {
+		flash["FlashStatus"] = notif.Values["status"]
+		delete(notif.Values, "status")
 	}
 
-	if sess.Values["message"] != nil {
-		flash["FlashMessage"] = sess.Values["message"]
-		delete(sess.Values, "message")
+	if notif.Values["message"] != nil {
+		flash["FlashMessage"] = notif.Values["message"]
+		delete(notif.Values, "message")
 	}
 
-	sess.Save(c.Request(), c.Response())
+	notif.Save(c.Request(), c.Response())
 
 	return tmpl.Execute(c.Response(), flash)
 }
@@ -444,23 +442,23 @@ func formLogin(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
 
-	sess, _ := session.Get("session", c)
+	notif, _ := session.Get("notif", c)
 	flash := map[string]interface{}{
 		"FlashStatus":  "",
 		"FlashMessage": "",
 	}
 
-	if sess.Values["status"] != nil {
-		flash["FlashStatus"] = sess.Values["status"]
-		delete(sess.Values, "status")
+	if notif.Values["status"] != nil {
+		flash["FlashStatus"] = notif.Values["status"]
+		delete(notif.Values, "status")
 	}
 
-	if sess.Values["message"] != nil {
-		flash["FlashMessage"] = sess.Values["message"]
-		delete(sess.Values, "message")
+	if notif.Values["message"] != nil {
+		flash["FlashMessage"] = notif.Values["message"]
+		delete(notif.Values, "message")
 	}
 
-	sess.Save(c.Request(), c.Response())
+	notif.Save(c.Request(), c.Response())
 
 	return tmpl.Execute(c.Response(), flash)
 }
@@ -486,10 +484,14 @@ func login(c echo.Context) error {
 		return redirectWithMessage(c, "password incorrect ❌", false, "/form-login")
 	}
 
+	notif, _ := session.Get("notif", c)
+	notif.Options.MaxAge = 5
+	notif.Values["message"] = "Login Success"
+	notif.Values["status"] = true
+	notif.Save(c.Request(), c.Response())
+
 	sess, _ := session.Get("session", c)
-	sess.Options.MaxAge = 600
-	sess.Values["message"] = "Login Success"
-	sess.Values["status"] = true
+	sess.Options.MaxAge = 300
 	sess.Values["name"] = user.Name
 	sess.Values["id"] = user.Id
 	sess.Values["isLogin"] = true
@@ -503,14 +505,16 @@ func logOut(c echo.Context) error {
 	sess.Options.MaxAge = -1
 	sess.Save(c.Request(), c.Response())
 
-	return c.Redirect(http.StatusMovedPermanently, "/")
+	return c.Redirect(http.StatusTemporaryRedirect, "/")
 }
 
 func redirectWithMessage(c echo.Context, message string, status bool, path string) error {
-	sess, _ := session.Get("session", c)
-	sess.Values["message"] = message
-	sess.Values["status"] = status
-	sess.Save(c.Request(), c.Response())
+	notif, _ := session.Get("notif", c)
+	notif.Values["message"] = message
+	notif.Values["status"] = status
+	notif.Save(c.Request(), c.Response())
 
 	return c.Redirect(http.StatusMovedPermanently, path)
 }
+
+ 

@@ -38,9 +38,9 @@
     <style>
       @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
     </style>
-    
   </head>
   <body>
+    <!-- <nav id="udin" class="navbar navbar-expand-lg bg-light"></nav> -->
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="https://dumbways.id/"
@@ -77,7 +77,7 @@
               <div class="nav-link text-black fw-semibold">Hallo, {{.flashName}}</div>
             </li>
             <li>
-              <a class="nav-link text-black fw-semibold" href="/logOut">Log Out</a>
+              <a class="nav-link text-black fw-semibold" href="/logout">Log Out</a>
             </li>
             <li>
               <a class="nav-link" href="/contact-me">
@@ -130,9 +130,12 @@
               </p>
 
               <!-- box cv -->
-              <div class="d-flex align-items-center my-4"
-                style="max-width: 80%">
-                <a  class="contact-me btn btn-outline-danger"
+              <div
+                class="d-flex align-items-center my-4"
+                style="max-width: 80%"
+              >
+                <a
+                  class="contact-me btn btn-outline-danger"
                   href="contact-me.html"
                   >Contact Me
                 </a>
@@ -144,24 +147,32 @@
 
               <!-- box social media -->
               <div class="mt-3 mb-3 d-flex flex-coloumn">
-                <a class="social-media"
+                <a
+                  class="social-media"
                   href="https://www.linkedin.com/in/handika-al-falaq"
-                  style="--color: gold">
+                  style="--color: gold"
+                >
                   <i class="fa-brands fa-linkedin-in fa-2x"></i>
                 </a>
-                <a class="social-media"
+                <a
+                  class="social-media"
                   href="https://www.instagram.com/handika_alfalaq/"
-                  style="--color: red" >
+                  style="--color: red"
+                >
                   <i class="fa-brands fa-instagram fa-2x"></i>
                 </a>
-                <a class="social-media"
+                <a
+                  class="social-media"
                   href="https://mobile.facebook.com/handika.alfalaq"
-                  style="--color: blue" >
+                  style="--color: blue"
+                >
                   <i class="fa-brands fa-facebook-f fa-2x"></i>
                 </a>
-                <a class="social-media"
+                <a
+                  class="social-media"
                   href="https://twitter.com/handikaal"
-                  style="--color: yellow" >
+                  style="--color: yellow"
+                >
                   <i class="fa-brands fa-twitter fa-2x"></i>
                 </a>
               </div>
@@ -202,7 +213,14 @@
           <div class="card h-100 p-3">
             <div
               class="rounded"
-              style="height: 280px; width: auto; background-image: url(/assets/img/404.jpg); background-size: cover; background-position: center center;"></div>
+              style="
+                height: 280px;
+                width: auto;
+                background-image: url(/assets/img/404.jpg);
+                background-size: cover;
+                background-position: center center;
+              "
+            ></div>
             <div class="card-body-blog">
               <div class="title d-flex my-2 ms-1">
                 <a href="/blog-detail/{{$blog.Id}}">
@@ -216,33 +234,51 @@
                 durasi {{$blog.DurationMonth}} bulan, {{$blog.DurationDay}} hari
               </div>
 
-              <p class="card-text my-3 ms-1"
-                style="height: 150px; overflow: hidden" >
+              <p
+                class="card-text my-3 ms-1"
+                style="height: 150px; overflow: hidden"
+              >
                 {{$blog.Content}}
               </p>
 
               <div class="ms-1">
-                <a class="software"
+                <a
+                  class="software"
                   href="https://play.google.com/store/"
-                  style="--color: blue">
+                  style="--color: blue"
+                >
                   <i class="bi bi-google-play fa-2x"></i>
                 </a>
-                <a class="software"
+                <a
+                  class="software"
                   href="https://web.airdroid.com/"
-                  style="--color: #a4c639" >
+                  style="--color: #a4c639"
+                >
                   <i class="bi bi-android2 fa-2x"></i>
                 </a>
-                <a class="software"
+                <a
+                  class="software"
                   href="https://www.java.com/en/"
-                  style="--color: red" >
+                  style="--color: red"
+                >
                   <i class="fa-brands fa-java fa-2x"></i>
                 </a>
               </div>
 
-              {{.flashStatusLogin}}
+              {{if $.flashStatusLogin}}
               <div class="action d-flex justify-content-between my-2 mx-1">
-                <a href="/edit-blog/{{$blog.Id}}" class="edit btn btn-dark" style="width: 45%">edit</a>
-                <a href="/delete-blog/{{$blog.Id}}"class="delete btn btn-dark" style="width: 45%">delete</a>
+                <a
+                  href="/edit-blog/{{$blog.Id}}"
+                  class="edit btn btn-dark"
+                  style="width: 45%"
+                  >edit</a
+                >
+                <a
+                  href="/delete-blog/{{$blog.Id}}"
+                  class="delete btn btn-dark"
+                  style="width: 45%"
+                  >delete</a
+                >
               </div>
               {{end}}
             </div>
@@ -263,7 +299,7 @@
             <input type="radio" name="answer" value="yes" /> Yes <br />
             <input type="radio" name="answer" value="no" /> No <br /><br />
           </div>
-          <input type="submit" value="Kirim" >
+          <input type="submit" value="Kirim" />
         </div>
       </form>
     </div>
@@ -277,5 +313,6 @@
       src="https://kit.fontawesome.com/d8072d68f9.js"
       crossorigin="anonymous"
     ></script>
+    <script src="/assets/js/common.js"></script>
   </body>
 </html>
