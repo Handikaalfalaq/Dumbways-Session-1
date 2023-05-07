@@ -1,0 +1,13 @@
+data, _ := connection.Conn.Query(context.Background(), "SELECT * FROM tb_user")
+	var result []User
+	for data.Next() {
+		var each = User{}
+		err := data.Scan(&each.Id, &each.Name, &each.Email, &each.Password, &each.Role, &each.Newblog)
+
+		if err != nil {
+			fmt.Println(err.Error())
+			return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+		}
+
+		result = append(result, each)
+	}

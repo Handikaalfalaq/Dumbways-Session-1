@@ -1,0 +1,26 @@
+.pertama:hover {
+  color: var(--color);
+  fill: var(--color);
+}
+
+.nodejsInput,
+.nextjsInput,
+.reactjsInput,
+.typescriptInput {
+  display: block !important;
+}
+
+@media only screen and (min-width: 767px) and (max-width: 991px) {
+  .container-card-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .photo-content {
+    margin: auto;
+  }
+
+  .card-body {
+    width: 100%;
+  }
+}
