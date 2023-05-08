@@ -23,7 +23,7 @@ function getData() {
   
     const destination = "handikaalfalaq01@gmail.com";
     let link = document.createElement("a");
-    link.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${destination}&su=${subject.value}&body=${message.value}. phone number : ${phoneNumber.value}`;
+    link.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${destination}&su=${subject.value}&body= hallo saya ${sender.value}. ${message.value}. bisa lanjut komunikasi melalui nomor saya ini : ${phoneNumber.value}`;
     link.click();
     
   sender.value = "";
